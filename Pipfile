@@ -5,7 +5,8 @@ name = "pypi"
 
 [packages]
 pandas = "*"
-pendulum ="*"
+pendulum = "*"
+requests = "*"
 
 [dev-packages]
 ipython = "*"
