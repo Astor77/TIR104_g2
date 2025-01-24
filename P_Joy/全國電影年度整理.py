@@ -1,7 +1,9 @@
 from pathlib import Path
 import pandas as pd
+import webbrowser
 
-json_path = Path("movie2022.json")
+#2022年資料
+json_path = Path("P_Joy/movie2022.json")
 if json_path.exists():
     try:
 
@@ -14,8 +16,8 @@ if json_path.exists():
 else:
     print(f"File not found: {json_path}")
 
-
-json_path = Path("movie2023.json")
+#2023年資料
+json_path = Path("P_Joy/movie2023.json")
 if json_path.exists():
     try:
 
@@ -28,7 +30,8 @@ if json_path.exists():
 else:
     print(f"File not found: {json_path}")
 
-json_path = Path("movie2024.json")
+#2024年資料
+json_path = Path("P_Joy/movie2024.json")
 if json_path.exists():
     try:
 
@@ -41,15 +44,39 @@ if json_path.exists():
 else:
     print(f"File not found: {json_path}")
 
-#合併2022, 2023, 2024年的資料
+#2025年資料
+# url = "https://boxofficetw.tfai.org.tw/stat/rsf/d29fa929b56c406fb2e1faf975f1c16e?filename=%E7%A5%A8%E6%88%BF%E8%B3%87%E6%96%99%E5%8C%AF%E5%87%BA%E5%B9%B4%E7%A5%A8%E6%88%BF%202025-01.json"
+# webbrowser.get('windows-default').open_new(url)
 
-dfJSON = pd.concat([dfJSON_2022, dfJSON_2023, dfJSON_2024]).drop_duplicates(subset=['MovieId']).reset_index(drop=True)
+json_path = Path("P_Joy/movie2025.json")
+if json_path.exists():
+    try:
 
-# print(dfJSON)
+    # 讀取JSON文件
+        dfJSON_2025 = pd.read_json(json_path)
+        #print(f"dfJSON_2025:\n{dfJSON_2025}")
+        print("-----------------------------------")
+    except Exception as e:
+        print(f"Error reading JSON file: {e}")
+else:
+    print(f"File not found: {json_path}")
+
+
+
+#合併2022, 2023, 2024, 2025年的資料
+dfJSON_raw = pd.concat([dfJSON_2022, dfJSON_2023, dfJSON_2024, dfJSON_2025], ignore_index= True)
+#儲存成csv
+dfJSON_raw.to_csv('TWMovie2022-2025_raw.csv', index = 0, encoding = 'utf-8-sig')
+
+#合併2022, 2023, 2024, 2025年的資料刪除重複的資料
+dfJSON = pd.concat([dfJSON_2022, dfJSON_2023, dfJSON_2024, dfJSON_2025]).drop_duplicates(subset=['MovieId']).reset_index(drop=True)
+
+# #儲存成csv
+dfJSON.to_csv('TWMovie2022-2025.csv', index = 0, encoding = 'utf-8-sig')
 
 
 # 只讀頭幾筆
-# print(dfJSON.head()) 
+# print(dfJSON.head())
 
 # dfJSON.tail()
 
@@ -57,12 +84,12 @@ dfJSON = pd.concat([dfJSON_2022, dfJSON_2023, dfJSON_2024]).drop_duplicates(subs
 
 # print(dfJSON.describe())
 
-#修改電影名稱中的() 運用split
-dfJSON['Name_sp'] = dfJSON['Name'].str.split('(').str[0]
-dfJSON['Name_split'] = dfJSON['Name_sp'].str.split('（').str[0]
+# #修改電影名稱中的() 運用split
+# dfJSON['Name_sp'] = dfJSON['Name'].str.split('(').str[0]
+# dfJSON['Name_split'] = dfJSON['Name_sp'].str.split('（').str[0]
 
-#儲存成csv
-dfJSON.to_csv('TWmovie2022-2024.csv', index = 0, encoding = 'utf-8-sig')
+# #儲存成csv
+# dfJSON.to_csv('TWmovie2022-2024.csv', index = 0, encoding = 'utf-8-sig')
 
 
 # print(dfJSON.loc[11, ['Name_split']])
