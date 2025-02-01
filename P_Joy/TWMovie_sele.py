@@ -1,6 +1,10 @@
-import time
+import json
 import os
+import time
+from datetime import timezone, datetime
+from datetime import timedelta
 import pandas as pd
+from glob import glob
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -9,10 +13,9 @@ file_path = r"C:\Users\Shangwei Yang\Downloads\Tibame Data Engineer\PythonCrawle
 dfTWMovie = pd.read_csv(file_path, engine = "python")
 
 
-
-# MovieIds = dfTWMovie["MovieID"]
 #測試用
-MovieIds = [21945, 22241, 23147]
+MovieIds = dfTWMovie["MovieId"].loc[0:1]
+
 print(MovieIds)
 #下載檔案路徑
 DOWNLOAD_DIR = r"C:\Users\Shangwei Yang\Downloads\project\movie_sales"
@@ -41,21 +44,62 @@ def download_rename(MovieId: list):
         driver.find_element(By.XPATH, "/html/body/main/section[4]/div[2]/button[3]").click()
         file_downloaded = False
         while not file_downloaded:
-            time.sleep(1)  # 每秒檢查一次
+            time.sleep(2)  # 每2秒檢查一次
             for file_name in os.listdir(DOWNLOAD_DIR):
                 if file_name.endswith(".crdownload"):  # Chrome 的暫存檔案後綴
                     file_downloaded = False
                     break
-                elif file_name.startswith("各週票房資料"):  # 檔案以'各週票房資料'開頭
+                elif file_name.startswith("各週票房資料"):  # 假設檔案以 '各週票房資料' 開頭
                     original_file_path = os.path.join(DOWNLOAD_DIR, file_name)
                     new_file_path = os.path.join(DOWNLOAD_DIR, f"{MovieId}.json")  #修改檔名為{MovieId}.json
                     os.rename(original_file_path, new_file_path)
                     file_downloaded = True
                     break
         
-        time.sleep(3)
+        time.sleep(2)
     # 關閉driver
     driver.close()
-        
 
-download_rename(MovieIds)
+#讀取json檔案，並新增MovieId、Created_time、Updated_time欄位
+def id_time_column(MovieId: list):
+    for MovieId in MovieIds:
+        with open(f"C:/Users/Shangwei Yang/Downloads/project/movie_sales/{MovieId}.json", "r", encoding= "utf-8-sig") as j:
+            TWMovie_in = json.load(j) 
+            TWMovie_in_v = TWMovie_in['Rows']
+            dfTWMovie_in = pd.json_normalize(TWMovie_in_v)
+            dfTWMovie_in['MovieId'] = f"{MovieId}"
+            dfTWMovie_in['Created_time'] = datetime.now(timezone(offset=timedelta(hours=8)))
+            dfTWMovie_in['updated_time'] = datetime.now(timezone(offset=timedelta(hours=8)))
+                
+            dfTWMovie_in.to_json(f"C:/Users/Shangwei Yang/Downloads/project/movie_sales/updated/{MovieId}.json", orient= "records")
+
+#合併所有json檔案並存為csv
+def Concat_jsonfile():
+    # 設定 JSON 檔案所在資料夾
+    folder_path = "C:/Users/Shangwei Yang/Downloads/project/movie_sales/updated"  # 資料夾路徑
+
+    # 找到所有 JSON 檔案
+    json_files = glob(os.path.join(folder_path, "*.json"))
+
+    # 建立一個空的 list 來儲存 DataFrame
+    df_list_TW = []
+
+    # 讀取每個 JSON 檔案並轉成 DataFrame
+    for file in json_files:
+        try:
+            df_TW = pd.read_json(file)  # 直接讀 JSON 檔
+            df_list_TW.append(df_TW)
+        except ValueError as e:
+            print(f"讀取 {file} 時發生錯誤: {e}")
+
+    # 合併所有 DataFrame
+    merged_df_TW = pd.concat(df_list_TW, ignore_index=True)
+
+    # 存成 CSV 或 JSON
+    merged_df_TW.to_csv("C:/Users/Shangwei Yang/Downloads/project/movie_sales/updated/merged_TWdata.csv", index=False)
+    # merged_df.to_json("merged_TWdata.json", orient="records", lines=True)
+
+#執行功能
+# download_rename(MovieIds)
+# id_time_column(MovieIds)
+# Concat_jsonfile()
