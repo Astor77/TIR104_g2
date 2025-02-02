@@ -1,6 +1,7 @@
 FROM python:3.12-slim-bullseye
 
 ENV TZ=Asia/Taipei
+ENV API_HOST=https://host.docker.internal:3306
 
 RUN apt-get update && \
     apt-get install git zsh vim curl wget zip make procps gcc python3-dev -y && \
@@ -8,3 +9,4 @@ RUN apt-get update && \
     echo "Y" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 RUN pip install --upgrade pip
+ 
