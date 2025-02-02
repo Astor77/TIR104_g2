@@ -3,8 +3,9 @@ import os
 import time
 from datetime import timezone, datetime
 from datetime import timedelta
-import pandas as pd
 from glob import glob
+
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
