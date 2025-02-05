@@ -1,8 +1,4 @@
-﻿{
-    "Ascending": false,
-    "OrderedColumn": "Region",
-    "DataItemCount": 841,
-    "DataItems": [
+﻿    [
         {
             "MovieId": "21945",
             "Rank": 1,
@@ -16823,4 +16819,3 @@
             "TotalWeekendAmount": 4267792.0000
         }
     ]
-}
