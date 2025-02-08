@@ -2,71 +2,74 @@ from pathlib import Path
 import pandas as pd
 import webbrowser
 
-#2022年資料
-json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2022 年票房資料.json")
-if json_path.exists():
-    try:
 
-    # 讀取JSON文件
-        dfJSON_2022 = pd.read_json(json_path, encoding= "utf-8-sig")
-        dfJSON_2022['Year'] = 2022
-        #print(f"dfJSON_2022:\n{dfJSON_2022}")
-        print("-----------------------------------")
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
-else:
-    print(f"File not found: {json_path}")
-
-#2023年資料
-json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2023 年票房資料.json")
-if json_path.exists():
-    try:
-
-    # 讀取JSON文件
-        dfJSON_2023 = pd.read_json(json_path, encoding= "utf-8-sig")
-        dfJSON_2023['Year'] = 2023
-        #print(f"dfJSON_2023:\n{dfJSON_2023}")
-        print("-----------------------------------")
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
-else:
-    print(f"File not found: {json_path}")
-
-#2024年資料
-json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2024 年票房資料.json")
-if json_path.exists():
-    try:
-
-    # 讀取JSON文件
-        dfJSON_2024 = pd.read_json(json_path, encoding= "utf-8-sig")
-        dfJSON_2024['Year'] = 2024
-        #print(f"dfJSON_2024:\n{dfJSON_2024}")
-        print("-----------------------------------")
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
-else:
-    print(f"File not found: {json_path}")
-
-#2025年資料
-# url = "https://boxofficetw.tfai.org.tw/stat/rsf/d29fa929b56c406fb2e1faf975f1c16e?filename=%E7%A5%A8%E6%88%BF%E8%B3%87%E6%96%99%E5%8C%AF%E5%87%BA%E5%B9%B4%E7%A5%A8%E6%88%BF%202025-01.json"
-# webbrowser.get('windows-default').open_new(url)
-
-json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2025 年票房資料.json")
-if json_path.exists():
-    try:
-
-    # 讀取JSON文件
-        dfJSON_2025 = pd.read_json(json_path)
-        dfJSON_2025['Year'] = 2025
-        # print(f"dfJSON_2025:\n{dfJSON_2025}")
-        print("-----------------------------------")
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
-else:
-    print(f"File not found: {json_path}")
 
 #合併2022, 2023, 2024, 2025年的資料
 def Concat_dfJSON():
+    #2022年資料
+    json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2022 年票房資料.json")
+    if json_path.exists():
+        try:
+
+        # 讀取JSON文件
+            dfJSON_2022 = pd.read_json(json_path, encoding= "utf-8-sig")
+            dfJSON_2022['Year'] = 2022
+            #print(f"dfJSON_2022:\n{dfJSON_2022}")
+            print("-----------------------------------")
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+    else:
+        print(f"File not found: {json_path}")
+
+    #2023年資料
+    json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2023 年票房資料.json")
+    if json_path.exists():
+        try:
+
+        # 讀取JSON文件
+            dfJSON_2023 = pd.read_json(json_path, encoding= "utf-8-sig")
+            dfJSON_2023['Year'] = 2023
+            #print(f"dfJSON_2023:\n{dfJSON_2023}")
+            print("-----------------------------------")
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+    else:
+        print(f"File not found: {json_path}")
+
+    #2024年資料
+    json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2024 年票房資料.json")
+    if json_path.exists():
+        try:
+
+        # 讀取JSON文件
+            dfJSON_2024 = pd.read_json(json_path, encoding= "utf-8-sig")
+            dfJSON_2024['Year'] = 2024
+            #print(f"dfJSON_2024:\n{dfJSON_2024}")
+            print("-----------------------------------")
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+    else:
+        print(f"File not found: {json_path}")
+
+    #2025年資料
+    # url = "https://boxofficetw.tfai.org.tw/stat/rsf/d29fa929b56c406fb2e1faf975f1c16e?filename=%E7%A5%A8%E6%88%BF%E8%B3%87%E6%96%99%E5%8C%AF%E5%87%BA%E5%B9%B4%E7%A5%A8%E6%88%BF%202025-01.json"
+    # webbrowser.get('windows-default').open_new(url)
+
+    json_path = Path("/workspaces/TIR104_g2/Ａ_raw_data/2025 年票房資料.json")
+    if json_path.exists():
+        try:
+
+        # 讀取JSON文件
+            dfJSON_2025 = pd.read_json(json_path)
+            dfJSON_2025['Year'] = 2025
+            # print(f"dfJSON_2025:\n{dfJSON_2025}")
+            print("-----------------------------------")
+        except Exception as e:
+            print(f"Error reading JSON file: {e}")
+    else:
+        print(f"File not found: {json_path}")
+
+
     dfJSON_raw = pd.concat([dfJSON_2022, dfJSON_2023, dfJSON_2024, dfJSON_2025], ignore_index= True)
     #儲存成csv
     dfJSON_raw.to_csv('/workspaces/TIR104_g2/Ａ_raw_data/TWMovie2022-2025_raw.csv', index = 0, encoding = 'utf-8-sig')
@@ -77,7 +80,38 @@ def Concat_dfJSON():
     #儲存成csv
     dfJSON.to_csv('/workspaces/TIR104_g2/Ａ_raw_data/TWMovie2022-2025.csv', index = 0, encoding = 'utf-8-sig')
 
-Concat_dfJSON()
+# Concat_dfJSON()
+
+#拆為兩張表TWMovie、TWMovie_annual
+def to_TWMovie_dataframe():
+    file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TWMovie2022-2025.csv"
+    dfTWMovie = pd.read_csv(file_path)
+
+
+    dfTWMovie = dfTWMovie[['MovieId', 'Region', 'Name', 'ReleaseDate']]
+
+
+    dfTWMovie.rename(columns= {"MovieId": "tw_id", "Region": "production_country", "Name": "tw_title", "ReleaseDate": "release_date"}, inplace= True)
+
+    print(dfTWMovie)
+
+    dfTWMovie.to_csv('/workspaces/TIR104_g2/Ａ_raw_data/TWMovie_df.csv', index = 0, encoding = 'utf-8-sig')
+
+def to_TWMovie_annual_dataframe():
+    file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TWMovie2022-2025_raw.csv"
+    dfTWMovie = pd.read_csv(file_path)
+
+    dfTWMovie_annual = dfTWMovie[['MovieId', "Year", "DayCount", "Amount", "Tickets"]]
+
+    dfTW_count = dfTWMovie_annual.groupby(['MovieId']).count()
+    print(dfTW_count)
+    dfTWMovie_annual.rename(columns= {"MovieId": "tw_id", "Year": "reference_year", "DayCount": "release_days", "Amount": "reference_year_amount", "Tickets": "reference_year_tickets"}, inplace= True)
+    print(dfTWMovie_annual)
+
+    dfTWMovie_annual.to_csv('/workspaces/TIR104_g2/Ａ_raw_data/TWMovie_annual_df.csv', index = 0, encoding = 'utf-8-sig')
+
+# to_TWMovie_dataframe()
+to_TWMovie_annual_dataframe()
 
 
 # 只讀頭幾筆
