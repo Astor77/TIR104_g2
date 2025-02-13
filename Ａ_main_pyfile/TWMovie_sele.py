@@ -22,7 +22,7 @@ print(MovieIds)
 #下載檔案路徑
 DOWNLOAD_DIR = r"C:\Users\Shangwei Yang\Downloads\project\movie_sales"
 
-def download_rename(MovieId: list):
+def download_rename(MovieId: list) -> None:
     # 「./chromedriver」代表Chrome Driver檔案放在本Python程式同目錄內
     service = Service("./chromedriver.exe")
     options = webdriver.ChromeOptions()
