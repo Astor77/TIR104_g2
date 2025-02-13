@@ -40,7 +40,7 @@ def save_as_csv(dataframe: object, file_name: str, dir_path: str="TW") -> None:
     try:
         main_path = Path("/workspaces/TIR104_g2/Ａ_raw_data")
         csv_file_path = main_path / dir_path / file_name
-        dataframe.to_csv(csv_file_path)
+        dataframe.to_csv(csv_file_path, encoding="utf-8-sig")
 
         write_log("save_as_csv", file_name, "success", "檔案儲存成功", csv_file_path)
         print(f"{file_name} 儲存成功, 存放路徑: {csv_file_path}")
