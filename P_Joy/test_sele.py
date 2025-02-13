@@ -5,8 +5,8 @@ from selenium.webdriver import Chrome
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-import requests
-from bs4 import BeautifulSoup
+
+
 
 file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TWMovie_df3.csv"
 dfTWMovie = pd.read_csv(file_path, engine = "python")
@@ -49,7 +49,7 @@ def get_release_date(MovieId: list) -> list:
             for element in elements:
                 data.append(element.text)
                 time.sleep(0.2)
-            release_date.append(data[1])    
+            release_date.append(data[1])
             
         except Exception as e:
             print(f"Error processing MovieId {MovieId}: {e}")
@@ -59,6 +59,6 @@ def get_release_date(MovieId: list) -> list:
     driver.close()
     return release_date
 
-
-release_dates = get_release_date(MovieIds)
-print(release_dates)
+if __name__ == '__main__':
+    release_dates = get_release_date(MovieIds)
+    print(release_dates)
