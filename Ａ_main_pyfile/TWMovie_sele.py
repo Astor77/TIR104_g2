@@ -1,3 +1,4 @@
+#Selenium 的部分若在container執行會報錯
 import json
 import os
 import time
@@ -10,7 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-file_path = r"C:\Users\Shangwei Yang\Downloads\Tibame Data Engineer\PythonCrawler\Examples\WebCrawler\TWMovie2022-2025.csv"
+file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TWMovie2022-2025.csv"
 dfTWMovie = pd.read_csv(file_path, engine = "python")
 
 
@@ -21,7 +22,7 @@ print(MovieIds)
 #下載檔案路徑
 DOWNLOAD_DIR = r"C:\Users\Shangwei Yang\Downloads\project\movie_sales"
 
-def download_rename(MovieId: list):
+def download_rename(MovieId: list) -> None:
     # 「./chromedriver」代表Chrome Driver檔案放在本Python程式同目錄內
     service = Service("./chromedriver.exe")
     options = webdriver.ChromeOptions()
@@ -77,7 +78,7 @@ def id_time_column(MovieId: list):
 #合併所有json檔案並存為csv
 def Concat_jsonfile():
     # 設定 JSON 檔案所在資料夾
-    folder_path = "C:/Users/Shangwei Yang/Downloads/project/movie_sales/updated"  # 資料夾路徑
+    folder_path = "/workspaces/TIR104_g2/Ａ_raw_data/TWMovie_sales"  # 資料夾路徑
 
     # 找到所有 JSON 檔案
     json_files = glob(os.path.join(folder_path, "*.json"))
@@ -97,8 +98,8 @@ def Concat_jsonfile():
     merged_df_TW = pd.concat(df_list_TW, ignore_index=True)
 
     # 存成 CSV 或 JSON
-    merged_df_TW.to_csv("C:/Users/Shangwei Yang/Downloads/project/movie_sales/updated/merged_TWdata.csv", index=False)
-    # merged_df.to_json("merged_TWdata.json", orient="records", lines=True)
+    merged_df_TW.to_csv("/workspaces/TIR104_g2/Ａ_raw_data/TWMovie_data.csv", index=False)
+    # merged_df.to_json("TWMovie_data.json", orient="records", lines=True)
 
 #執行功能
 # download_rename(MovieIds)
