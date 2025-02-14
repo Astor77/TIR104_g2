@@ -6,3 +6,12 @@
 [2025-02-13 16:50:14] SUCCESS: save_as_json - File 'tmdb_top500_detail_raw_2023.json' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/Global/tmdb_top500_detail_raw_2023.json' - 檔案儲存成功
 [2025-02-13 16:56:34] SUCCESS: save_as_json - File 'tmdb_top500_detail_raw_2024.json' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/Global/tmdb_top500_detail_raw_2024.json' - 檔案儲存成功
 [2025-02-13 17:02:55] SUCCESS: save_as_json - File 'tmdb_top500_detail_raw_2025.json' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/Global/tmdb_top500_detail_raw_2025.json' - 檔案儲存成功
+[2025-02-14 13:55:41] SUCCESS: save_as_csv - File 'TWMovie2022-2025_raw2.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie2022-2025_raw2.csv' - 檔案儲存成功
+[2025-02-14 15:36:28] SUCCESS: save_as_csv - File 'TWMovie_weekly_data.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data.csv' - 檔案儲存成功
+[2025-02-14 16:41:02] SUCCESS: save_as_csv - File 'TWMovie_weekly_data2.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data2.csv' - 檔案儲存成功
+[2025-02-14 16:46:57] SUCCESS: save_as_csv - File 'TWMovie_weekly_data2.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data2.csv' - 檔案儲存成功
+[2025-02-14 17:48:02] SUCCESS: save_as_csv - File 'TWMovie_weekly_data3.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data3.csv' - 檔案儲存成功
+[2025-02-14 18:37:07] SUCCESS: save_as_csv - File 'TWMovie_weekly_data4.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data4.csv' - 檔案儲存成功
+[2025-02-14 19:20:28] SUCCESS: save_as_csv - File 'TWMovie_weekly_df.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_df.csv' - 檔案儲存成功
+[2025-02-14 22:58:12] SUCCESS: save_as_csv - File 'TWMovie_weekly_data3.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data3.csv' - 檔案儲存成功
+[2025-02-14 23:01:04] SUCCESS: save_as_csv - File 'TWMovie_weekly_df.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_df.csv' - 檔案儲存成功

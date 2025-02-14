@@ -1,29 +1,31 @@
 from pathlib import Path
 import pandas as pd
 import webbrowser
+import module_save_file as ms
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
+# from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.common.by import By
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("disable-extensions")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("window-size=1080,720")
-chrome_options.add_argument("--ignore-certificate-errors")
-chrome_options.add_argument("--allow-insecure-localhost")
-chrome_options.add_argument("--headless")
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument("disable-extensions")
+# chrome_options.add_argument("--disable-gpu")
+# chrome_options.add_argument("window-size=1080,720")
+# chrome_options.add_argument("--ignore-certificate-errors")
+# chrome_options.add_argument("--allow-insecure-localhost")
+# chrome_options.add_argument("--headless")
 
-driver = webdriver.Remote(
-    command_executor="http://localhost:14444/wd/hub",
-    options=chrome_options,
-)
+# driver = webdriver.Remote(
+#     command_executor="http://localhost:14444/wd/hub",
+#     options=chrome_options,
+# )
 # driver = Chrome()
 
 year_list = [2022, 2023, 2024, 2025]
 
 #2025年資料需不斷更新
+#這部分可能得用 selenium 處理
 # url = "https://boxofficetw.tfai.org.tw/statistic/Year/10/0/all/False/Region/2025-02-14"
 # webbrowser.get('windows-default').open_new(url)
 
@@ -85,6 +87,9 @@ def concat_df_json_distinct(year_list: list) -> pd.DataFrame:
         return pd.DataFrame()
 
 
+
+
+
 #拆為兩張表TWMovie、TWMovie_annual
 def to_TWMovie_dataframe() -> pd.DataFrame:
     file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie2022-2025.csv"
@@ -116,13 +121,13 @@ def to_TWMovie_annual_dataframe() -> pd.DataFrame:
 if __name__ == '__main__':
     combined_df = concat_df_json(year_list)
     print(combined_df.head())
+    #存成csv檔
+    ms.save_as_csv(combined_df, "TWMovie2022-2025_raw2.csv", "TW")
     # combined_df = concat_df_json_distinct(year_list)
     # to_TWMovie_dataframe()
     # to_TWMovie_annual_dataframe()
 
 
-#儲存成csv
-combined_df.to_csv('/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie2022-2025_raw.csv', index = 0, encoding = 'utf-8-sig')
 
 
 
