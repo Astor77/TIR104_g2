@@ -22,7 +22,7 @@ driver = webdriver.Remote(
 )
 # driver = Chrome()
 
-file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TWMovie_df3.csv"
+file_path = "/workspaces/TIR104_g2/A1_temp_data/tw/TWMovie_df3.csv"
 
 try:
     # 讀取csv文件
@@ -76,7 +76,7 @@ def release_date_to_df(release_date: list) -> pd.DataFrame:
 if __name__ == "__main__":
     release_dates = get_release_date(MovieIds)
     print(release_dates)
-    ms.save_as_csv(release_date_to_df(release_dates), "tw_release_dates.csv", "TW")
+    ms.save_as_csv(release_date_to_df(release_dates), "tw_release_dates.csv", "/workspaces/TIR104_g2/A0_raw_data/tw/tw_release_dates")
 
 
 # dfTWMovie_new = pd.concat([dfTWMovie, df_release_dates], axis= 1)

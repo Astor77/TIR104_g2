@@ -12,7 +12,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
-file_path = "/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie2022-2025.csv"
+file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/TWMovie2022-2025.csv"
 dfTWMovie = pd.read_csv(file_path, engine = "python")
 #測試用
 MovieIds = dfTWMovie["MovieId"].loc[0:1]
@@ -64,18 +64,18 @@ def download_rename(MovieId: list) -> None:
 #讀取json檔案，並新增MovieId欄位
 def id_time_column(MovieIds: list)-> None:
     for MovieId in MovieIds:
-        with open(f"/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_sales/{MovieId}.json", "r", encoding= "utf-8-sig") as j:
+        with open(f"/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_sales/{MovieId}.json", "r", encoding= "utf-8-sig") as j:
             TWMovie_in = json.load(j)
             TWMovie_in_v = TWMovie_in['Rows']
             dfTWMovie_in = pd.json_normalize(TWMovie_in_v)
             dfTWMovie_in['MovieId'] = f"{MovieId}"
 
-            dfTWMovie_in.to_json(f"/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_sales/{MovieId}.json", orient= "records")
+            dfTWMovie_in.to_json(f"/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_sales/{MovieId}.json", orient= "records")
 
 #合併所有json檔案
 def Concat_jsonfile() -> pd.DataFrame:
     # 設定 JSON 檔案所在資料夾
-    folder_path = "/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_sales"  # 資料夾路徑
+    folder_path = "/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_sales"  # 資料夾路徑
 
     # 找到所有 JSON 檔案
     json_files = glob(os.path.join(folder_path, "*.json"))
@@ -106,4 +106,4 @@ if __name__ == "__main__":
     #合併所有json檔案
     merged_df = Concat_jsonfile()
     # 存成 CSV 或 JSON
-    ms.save_as_csv(merged_df, "TWMovie_weekly_data.csv", "TW")
+    ms.save_as_csv(merged_df, "TWMovie_weekly_data.csv", "/workspaces/TIR104_g2/A0_raw_data/tw")
