@@ -4,11 +4,10 @@ import pandas as pd
 # 讀取 csv 或是 json 檔案並返回 dataframe
 def read_file_to_df(file_path: str) -> pd.DataFrame:
     """
-    將檔案轉換成 DataFrame，支援 .csv 和 .json 格式。
-    檔案會基於指定的 base_dir（預設為 raw_data 路徑）。
+    將指定路徑的檔案轉換成 DataFrame，支援 .csv 和 .json 格式。
     Args:
-    file_path (str): 檔案路徑（含檔案名稱、副檔名）
-    return: 轉換後的 Pandas DataFrame
+        file_path (str): 檔案路徑（含檔案名稱、副檔名）
+        return: 轉換後的 Pandas DataFrame
     """
 
     # 檢查檔案是否存在
