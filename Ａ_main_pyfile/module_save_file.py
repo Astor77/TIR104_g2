@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 
 # 設定全域的 log 文件路徑
-LOG_FILE_PATH = "/workspaces/TIR104_g2/Ａ_raw_data/save_as_file_log.txt"
+LOG_FILE_PATH = "/workspaces/TIR104_g2/save_as_file_log.txt"
 
 # write_log()
 # 寫入訊息至 log file
@@ -29,18 +29,17 @@ def write_log(operation: str, file_name: str, status: str, message: str, file_pa
 
 # save_as_csv()
 # 儲存 DataFrame 為 CSV 檔案
-def save_as_csv(dataframe: object, file_name: str, dir_path: str="TW") -> None:
+def save_as_csv(dataframe: pd.DataFrame, file_name: str, dir_path: str) -> None:
     """
     將 DataFrame 儲存為 CSV 檔案
     Args:
-        dataframe (Dataframe): 要儲存的 DataFrame
+        dataframe (pd.DataFrame): 要儲存的 DataFrame
         file_name (str): 儲存的檔案名稱字串
-        dir_path (str): 要儲存在 TW 還是 Global 資料夾，預設值為TW
+        dir_path (str): 儲存的資料夾完整路徑
     """
     try:
-        main_path = Path("/workspaces/TIR104_g2/Ａ_raw_data")
-        csv_file_path = main_path / dir_path / file_name
-        dataframe.to_csv(csv_file_path, encoding="utf-8-sig")
+        csv_file_path = dir_path / file_name
+        dataframe.to_csv(csv_file_path, encoding="utf-8-sig", index=False)
 
         write_log("save_as_csv", file_name, "success", "檔案儲存成功", csv_file_path)
         print(f"{file_name} 儲存成功, 存放路徑: {csv_file_path}")
@@ -52,17 +51,16 @@ def save_as_csv(dataframe: object, file_name: str, dir_path: str="TW") -> None:
 # save_as_json()
 # 將 list 儲存為 JSON 檔案
 # 留意此處的 data 引數需要用list type
-def save_as_json(data: list, file_name: str, dir_path: str="TW") -> None:
+def save_as_json(data: list, file_name: str, dir_path: str) -> None:
     """
     將 list 儲存為 JSON 檔案
     Args:
         data (list): 要儲存的 DataFrame
         file_name (str): 儲存的檔案名稱字串
-        dir_path (str): 要儲存在 TW 還是 Global 資料夾，預設值為TW
+        dir_path (str): 儲存的資料夾完整路徑
     """
     try:
-        main_path = Path("/workspaces/TIR104_g2/Ａ_raw_data")
-        json_file_path = main_path / dir_path / file_name
+        json_file_path = dir_path / file_name
 
         directory = os.path.dirname(json_file_path)
         if not os.path.exists(directory):
