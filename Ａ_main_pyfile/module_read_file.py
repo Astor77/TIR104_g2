@@ -29,5 +29,6 @@ def read_file_to_df(file_path: str) -> pd.DataFrame:
 
     except Exception as err:
         print(f"error: {err}")
+        return None
 
     return df

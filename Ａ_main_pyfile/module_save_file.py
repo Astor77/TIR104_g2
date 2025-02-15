@@ -1,7 +1,6 @@
 import json
 import os
 from datetime import datetime
-from pathlib import Path
 import pandas as pd
 
 # 設定全域的 log 文件路徑
@@ -38,7 +37,7 @@ def save_as_csv(dataframe: pd.DataFrame, file_name: str, dir_path: str) -> None:
         dir_path (str): 儲存的資料夾完整路徑
     """
     try:
-        csv_file_path = dir_path / file_name
+        csv_file_path = dir_path + file_name
         dataframe.to_csv(csv_file_path, encoding="utf-8-sig", index=False)
 
         write_log("save_as_csv", file_name, "success", "檔案儲存成功", csv_file_path)
@@ -60,7 +59,7 @@ def save_as_json(data: list, file_name: str, dir_path: str) -> None:
         dir_path (str): 儲存的資料夾完整路徑
     """
     try:
-        json_file_path = dir_path / file_name
+        json_file_path = dir_path + file_name
 
         directory = os.path.dirname(json_file_path)
         if not os.path.exists(directory):
