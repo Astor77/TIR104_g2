@@ -16,3 +16,22 @@
 [2025-02-14 22:58:12] SUCCESS: save_as_csv - File 'TWMovie_weekly_data3.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data3.csv' - 檔案儲存成功
 [2025-02-14 23:01:04] SUCCESS: save_as_csv - File 'TWMovie_weekly_df.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_df.csv' - 檔案儲存成功
 [2025-02-15 16:40:17] SUCCESS: save_as_csv - File 'TWMovie_weekly_data3.csv' - File Path'/workspaces/TIR104_g2/A1_temp_data/tw/TWMovie_weekly_data3.csv' - 檔案儲存成功
+[2025-02-16 00:59:27] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdbv2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:04:01] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdbv2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:05:59] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdbv2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:10:35] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdbv2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:13:43] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdbv2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:17:09] SUCCESS: save_as_csv - File 'test.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/test.csv' - 檔案儲存成功
+[2025-02-16 01:43:49] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/v2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:54:20] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/v2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 01:55:57] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/v2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 10:57:07] SUCCESS: save_as_csv - File 'df_tw_annual_test.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/df_tw_annual_test.csv' - 檔案儲存成功
+[2025-02-16 11:32:19] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/v2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 11:49:37] SUCCESS: save_as_csv - File 'df_tw_annual_test.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/df_tw_annual_test.csv' - 檔案儲存成功
+[2025-02-16 11:50:54] SUCCESS: save_as_csv - File 'df_tw_annual_test.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/df_tw_annual_test.csv' - 檔案儲存成功
+[2025-02-16 12:03:21] SUCCESS: save_as_csv - File 'df_tw_annual_test.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/df_tw_annual_test.csv' - 檔案儲存成功
+[2025-02-16 12:05:36] SUCCESS: save_as_csv - File 'df_tw_annual_test.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/df_tw_annual_test.csv' - 檔案儲存成功
+[2025-02-16 12:29:58] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/v2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 12:54:05] SUCCESS: save_as_csv - File 'v2_mapping_close_true.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_mapping_tmdb/v2_mapping_close_true.csv' - 檔案儲存成功
+[2025-02-16 13:17:40] SUCCESS: save_as_json - File 'tmdb_detail_raw.json' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tmdb_details/tmdb_detail_raw.json' - 檔案儲存成功
+[2025-02-16 13:17:40] FAIL: save_as_csv - File 'tmdb_detail_raw.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tmdb_details/tmdb_detail_raw.csv' - 'list' object has no attribute 'to_csv'
