@@ -22,7 +22,7 @@ driver = webdriver.Remote(
 )
 # driver = Chrome()
 
-file_path = "/workspaces/TIR104_g2/A1_temp_data/tw/TWMovie_df3.csv"
+file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_2022-2025/TWMovie2022-2025.csv"
 
 try:
     # 讀取csv文件
@@ -33,7 +33,7 @@ except Exception as e:
 
 
 #測試用
-MovieIds = dfTWMovie["tw_id"].loc[0:1]
+MovieIds = dfTWMovie["MovieId"].loc[0:1]
 print(MovieIds)
 
 # task 1 Extract
@@ -67,7 +67,7 @@ def get_release_date(MovieIds: list) -> list:
 #task 2 Transform
 # 存成Dataframe
 def release_date_to_df(release_date: list) -> pd.DataFrame:
-    columns = ['tw_first_release_date']
+    columns = ['release_dates']
 
     df_release_dates = pd.DataFrame(release_date, columns= columns)
     return df_release_dates
@@ -76,7 +76,7 @@ def release_date_to_df(release_date: list) -> pd.DataFrame:
 if __name__ == "__main__":
     release_dates = get_release_date(MovieIds)
     print(release_dates)
-    ms.save_as_csv(release_date_to_df(release_dates), "tw_release_dates.csv", "/workspaces/TIR104_g2/A0_raw_data/tw/tw_release_dates")
+    # ms.save_as_csv(release_date_to_df(release_dates), "tw_release_dates.csv", "/workspaces/TIR104_g2/A0_raw_data/tw/tw_release_dates")
 
 
 # dfTWMovie_new = pd.concat([dfTWMovie, df_release_dates], axis= 1)

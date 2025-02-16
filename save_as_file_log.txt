@@ -16,3 +16,6 @@
 [2025-02-14 22:58:12] SUCCESS: save_as_csv - File 'TWMovie_weekly_data3.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_data3.csv' - 檔案儲存成功
 [2025-02-14 23:01:04] SUCCESS: save_as_csv - File 'TWMovie_weekly_df.csv' - File Path'/workspaces/TIR104_g2/Ａ_raw_data/TW/TWMovie_weekly_df.csv' - 檔案儲存成功
 [2025-02-15 16:40:17] SUCCESS: save_as_csv - File 'TWMovie_weekly_data3.csv' - File Path'/workspaces/TIR104_g2/A1_temp_data/tw/TWMovie_weekly_data3.csv' - 檔案儲存成功
+[2025-02-15 21:02:36] SUCCESS: save_as_csv - File 'TWMovie_weekly_df.csv' - File Path'/workspaces/TIR104_g2/A1_temp_data/tw/TWMovie_weekly_df.csv' - 檔案儲存成功
+[2025-02-15 21:39:25] SUCCESS: save_as_csv - File 'TWMovie2022-2025_raw.csv' - File Path'/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_2022-2025/TWMovie2022-2025_raw.csv' - 檔案儲存成功
+[2025-02-15 22:46:31] SUCCESS: save_as_csv - File 'TWMovie_df2.csv' - File Path'/workspaces/TIR104_g2/A1_temp_data/tw/TWMovie_df2.csv' - 檔案儲存成功

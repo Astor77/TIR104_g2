@@ -1,6 +1,5 @@
 from pathlib import Path
 import pandas as pd
-import webbrowser
 import module_save_file as ms
 
 # from selenium import webdriver
@@ -22,29 +21,15 @@ import module_save_file as ms
 # )
 # driver = Chrome()
 
-#原始檔案
-try:
-    file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/TWMovie2022-2025_raw2.csv"
-    dfTWMovie = pd.read_csv(file_path)
-    print(dfTWMovie.head())
-except Exception as e:
-    print(f"Error reading file: {e}")
-
-#刪除有重複的movieid
-try:
-    file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/TWMovie2022-2025.csv"
-    dfTWMovie_distinct = pd.read_csv(file_path)
-    print(dfTWMovie_distinct.head())
-except Exception as e:
-    print(f"Error reading file: {e}")
-
-
+# 2022-2025年資料
 year_list = [2022, 2023, 2024, 2025]
 
+#Task 1 Extract
+#抓取全國2022-2025的票房資料json檔案
 #2025年資料需不斷更新
 #這部分可能得用 selenium 處理
 # url = "https://boxofficetw.tfai.org.tw/statistic/Year/10/0/all/False/Region/2025-02-14"
-# webbrowser.get('windows-default').open_new(url)
+
 
 #task1 Transform
 #合併2022, 2023, 2024, 2025年的資料
@@ -105,41 +90,18 @@ def concat_df_json_distinct(year_list: list) -> pd.DataFrame:
         return pd.DataFrame()
 
 
-#task3 Transform
-#整理為TWMovie dataframe
-def to_TWMovie_dataframe(df: object) -> pd.DataFrame:
-
-    df = df[['MovieId', 'Region', 'Name', 'ReleaseDate']]
-    df.rename(columns= {"MovieId": "tw_id", "Region": "production_country", "Name": "tw_title", "ReleaseDate": "release_date"}, inplace= True)
-
-    return df
-
-#task4 Transform
-# 整理為TWMovie_annual dataframe
-def to_TWMovie_annual_dataframe(df: object) -> pd.DataFrame:
-
-    df = df[['MovieId', "Year", "DayCount", "Amount", "Tickets"]]
-
-    dfTW_count = df.groupby(['MovieId']).count()
-    print(dfTW_count)
-    df.rename(columns= {"MovieId": "tw_id", "Year": "reference_year", "DayCount": "release_days", "Amount": "reference_year_amount", "Tickets": "reference_year_tickets"}, inplace= True)
-    
-    return df
-
-
-
 
 if __name__ == '__main__':
     #合併2022, 2023, 2024, 2025年的資料
     combined_df = concat_df_json(year_list)
     print(combined_df.head())
     #存成csv檔
-    ms.save_as_csv(combined_df, "TWMovie2022-2025_raw2.csv", "/workspaces/TIR104_g2/A0_raw_data/tw")
+    ms.save_as_csv(combined_df, "TWMovie2022-2025_raw.csv", "/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_2022-2025/")
    
     # combined_df2 = concat_df_json_distinct(year_list)
-    # ms.save_as_csv(combined_df2, "TWMovie2022-2025_raw2.csv", "/workspaces/TIR104_g2/A0_raw_data/tw")
-    # to_TWMovie_dataframe(dfTWMovie)
-    # to_TWMovie_annual_dataframe(dfTWMovie_distinct)
+    # ms.save_as_csv(combined_df2, "TWMovie2022-2025.csv", "/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_2022-2025/")
+
+
 
 
 

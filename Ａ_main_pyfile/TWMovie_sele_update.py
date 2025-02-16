@@ -11,7 +11,7 @@ except Exception as e:
 
 
 try:
-    file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/TWMovie2022-2025.csv"
+    file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_2022-2025/TWMovie2022-2025.csv"
     dfTWMovie = pd.read_csv(file_path)
     dfTWMovie_m = dfTWMovie[['MovieId', 'Year']]
     # print(dfTWMovie_m.head())
@@ -21,7 +21,7 @@ except Exception as e:
 
 
 try:
-    file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/TWMovie_weekly_data2.csv"
+    file_path = "/workspaces/TIR104_g2/A0_raw_data/tw/tw_movie_weekly/TWMovie_weekly_data2.csv"
     dfTWMovie_weekly_raw = pd.read_csv(file_path, index_col= 0)
     print(dfTWMovie_weekly_raw.head())
 except Exception as e:
@@ -89,10 +89,10 @@ if __name__ == "__main__":
 #     dfTWMovie_weekly = split_date_column(new_df)
 #     # 存成csv
 #     ms.save_as_csv(dfTWMovie_weekly, "TWMovie_weekly_data2.csv", "TW")
-    dfTWMovie_weekly_raw2 = column_to_datetime(dfTWMovie_weekly_raw)
-    #存成csv
-    ms.save_as_csv(filter_start_day_notna(dfTWMovie_weekly_raw2), "TWMovie_weekly_data3.csv", "/workspaces/TIR104_g2/A1_temp_data/tw/")
-    # dfTWMovie_weekly_dataframe = dfTWMovie_weekly_df(dfTWMovie_weekly_raw3)
+    # dfTWMovie_weekly_raw2 = column_to_datetime(dfTWMovie_weekly_raw)
     # #存成csv
-    # ms.save_as_csv(dfTWMovie_weekly_dataframe, "TWMovie_weekly_df.csv", "/workspaces/TIR104_g2/A1_temp_data")
+    # ms.save_as_csv(filter_start_day_notna(dfTWMovie_weekly_raw2), "TWMovie_weekly_data3.csv", "/workspaces/TIR104_g2/A1_temp_data/tw/")
+    dfTWMovie_weekly_dataframe = dfTWMovie_weekly_df(dfTWMovie_weekly_raw3)
+    #存成csv
+    ms.save_as_csv(dfTWMovie_weekly_dataframe, "TWMovie_weekly_df.csv", "/workspaces/TIR104_g2/A1_temp_data/tw/")
 
