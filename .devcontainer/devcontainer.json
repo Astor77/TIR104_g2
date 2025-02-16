@@ -50,6 +50,10 @@
     "--name",
     "container-g2-project",
     "--network",
-    "host"
+    "host",
+//  "-v",
+//  "宿主機資料夾1路徑:目前container的某個資料夾1路徑",
+//  "-v",
+//  "宿主機資料夾2路徑:目前container的某個資料夾2路徑",
   ]
 }
