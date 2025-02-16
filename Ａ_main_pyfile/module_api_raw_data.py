@@ -66,6 +66,7 @@ def tmdb_get_list_movie_detail(tmdb_id_list: list, language: str="zh-TW", API_KE
     try:
         movie_details = []
         for tmdb_id in tmdb_id_list:
+            tmdb_id = int(tmdb_id)
             movie_details.append(tmdb_get_one_movie_detail(tmdb_id, language, API_KEY))
             time.sleep(0.5)
         return movie_details
