@@ -1,14 +1,16 @@
 import json
 import os
+import requests
 from datetime import datetime
 import pandas as pd
+from pathlib import Path
 
 # 設定全域的 log 文件路徑
 LOG_FILE_PATH = "/workspaces/TIR104_g2/save_as_file_log.txt"
 
 # write_log()
 # 寫入訊息至 log file
-def write_log(operation: str, file_name: str, status: str, message: str, file_path: str ,log_file: str = LOG_FILE_PATH) -> None:
+def write_log(operation: str, file_name: str, status: str, message: str, file_path: str ,log_file_path: str = LOG_FILE_PATH) -> None:
     """
     記錄儲存操作到 log 文件
     Args:
@@ -23,7 +25,7 @@ def write_log(operation: str, file_name: str, status: str, message: str, file_pa
 
     log_message = f"[{timestamp}] {status.upper()}: {operation} - File '{file_name}' - File Path'{file_path}' - {message}\n"
 
-    with open(log_file, "a", encoding="utf-8") as file:
+    with open(log_file_path, "a", encoding="utf-8") as file:
         file.write(log_message)
 
 # save_as_csv()
@@ -37,7 +39,7 @@ def save_as_csv(dataframe: pd.DataFrame, file_name: str, dir_path: str) -> None:
         dir_path (str): 儲存的資料夾完整路徑
     """
     try:
-        csv_file_path = dir_path + file_name
+        csv_file_path = Path(dir_path) / file_name
         dataframe.to_csv(csv_file_path, encoding="utf-8-sig", index=False)
 
         write_log("save_as_csv", file_name, "success", "檔案儲存成功", csv_file_path)
@@ -59,7 +61,7 @@ def save_as_json(data: list, file_name: str, dir_path: str) -> None:
         dir_path (str): 儲存的資料夾完整路徑
     """
     try:
-        json_file_path = dir_path + file_name
+        json_file_path = Path(dir_path) / file_name
 
         directory = os.path.dirname(json_file_path)
         if not os.path.exists(directory):
