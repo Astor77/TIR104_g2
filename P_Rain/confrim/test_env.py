@@ -1,6 +1,5 @@
 import os
 import time
-
 import pandas as pd
 import requests
 
@@ -19,14 +18,15 @@ def load_csv(file_path):
 def fetch_release_dates(id, headers):
     url = f"https://api.themoviedb.org/3/movie/{id}/release_dates"
     response = requests.get(url, headers=headers)
+
     if response.status_code == 200:
         return response.json().get("results", [])
     else:
-        print(f"查詢失敗: {tmdb_id}, 狀態碼: {response.status_code}, 錯誤訊息: {response.text}")
+        print(f"查詢失敗: {id}, 狀態碼: {response.status_code}, 錯誤訊息: {response.text}")
         return None
 
 # 解析 API 資料
-def parse_release_dates(data, tmdb_id):
+def parse_release_dates(data, id):
     records = []
     for result in data:
         country = result.get("iso_3166_1")
@@ -61,7 +61,7 @@ def fetch_and_save_release_dates(input_file, output_folder):
         data = fetch_release_dates(id, headers)
         if data:
             release_dates.extend(parse_release_dates(data, id))
-        time.sleep(1)  # 防止 API 限制
+        time.sleep(0.5)  # 防止 API 限制
 
     df_releases = pd.DataFrame(release_dates)
     df_releases["release_date"] = pd.to_datetime(df_releases["release_date"], errors="coerce", utc=True)

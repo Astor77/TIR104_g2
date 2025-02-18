@@ -6,7 +6,7 @@ import os
 
 
 # 讀取 mapping_close_true.csv
-file_path = "/workspaces/TIR104_g2/P_Rain/confrim/v2_mapping_close_true.csv"  # 確保路徑
+file_path = "v2_mapping_close_true.csv"  # 確保路徑
 df = pd.read_csv(file_path)
 
 # 檢查是否有 tmdb_id 欄位
@@ -27,13 +27,6 @@ release_dates = []
 # 取得唯一的 TMDB ID
 _ids = df["id"].dropna().astype(int).unique()
 
-# 記錄開始時間
-start_time = time.time()
-
-for idx, id in enumerate(_ids):
-    current_time = time.time() - start_time
-    minutes, seconds = divmod(current_time, 60)
-    print(f"⏳ 進行中... 已執行 {int(minutes)} 分 {int(seconds)} 秒。")
 
 # 查詢 API
 for idx, id in enumerate(_ids):
@@ -66,14 +59,9 @@ for idx, id in enumerate(_ids):
 # 轉換為 DataFrame
 df_v3_release_dates = pd.DataFrame(release_dates)
 
-# 計算總執行時間
-elapsed_time = time.time() - start_time
-minutes, seconds = divmod(elapsed_time, 60)
-print(f" 查詢完成！總共花費 {int(minutes)} 分 {int(seconds)} 秒。")
-
 
 # 儲存到 CSV
-csv_path  = "/workspaces/TIR104_g2/P_Rain/confrim/v3_release_dates.csv"#要存的檔案位置
+csv_path  = "v3_release_dates.csv"#要存的檔案位置
 df_v3_release_dates.to_csv(csv_path, index=False, encoding="utf-8-sig")
 
 # 確保 CSV 真的寫入成功
